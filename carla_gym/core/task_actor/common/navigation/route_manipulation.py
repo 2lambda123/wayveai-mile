@@ -16,6 +16,7 @@ import carla
 import numpy as np
 
 from .map_utils import RoadOption
+import defusedxml.ElementTree
 
 EARTH_RADIUS_EQUA = 6378137.0
 
@@ -92,7 +93,7 @@ def _get_latlon_ref(world):
     :return: tuple with lat and lon coordinates
     """
     xodr = world.get_map().to_opendrive()
-    tree = ET.ElementTree(ET.fromstring(xodr))
+    tree = ET.ElementTree(defusedxml.ElementTree.fromstring(xodr))
 
     # default reference
     lat_ref = 42.0
