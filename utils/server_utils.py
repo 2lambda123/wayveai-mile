@@ -50,7 +50,7 @@ class CarlaServerManager():
             cmd = f'CUDA_VISIBLE_DEVICES={cfg["gpu"]} bash {self._carla_sh_str} ' \
                 f'-fps={CARLA_FPS} -nosound -quality-level=Epic -carla-rpc-port={cfg["port"]}'
             log.info(cmd)
-            server_process = subprocess.Popen(cmd, shell=True, preexec_fn=os.setsid)
+            server_process = subprocess.Popen(cmd, shell=False, preexec_fn=os.setsid)
         time.sleep(self._t_sleep)
 
     def stop(self):

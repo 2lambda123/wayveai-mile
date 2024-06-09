@@ -93,7 +93,7 @@ class CarlaServerManager:
         if not display:
             cmd += ' -RenderOffScreen'
 
-        self._server_process = subprocess.Popen(cmd, shell=True, preexec_fn=os.setsid)
+        self._server_process = subprocess.Popen(cmd, shell=False, preexec_fn=os.setsid)
         time.sleep(t_sleep)
 
 
